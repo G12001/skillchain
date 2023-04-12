@@ -1,4 +1,5 @@
 pragma solidity ^0.8.0;
+
 // SPDX-License-Identifier: GPL-3.0
 
 contract CertificateGeneration {
@@ -33,22 +34,30 @@ contract CertificateGeneration {
         );
     }
 
-    function validateCertificate(string memory _certificateID) public view returns (bool) {
+    function validateCertificate(
+        string memory _certificateID
+    ) public view returns (bool) {
         return certificates[_certificateID].isValid;
     }
 
-   function invalidateCertificate(string memory certificateID) public {
-    certificates[certificateID].isValid = false;
+    function invalidateCertificate(string memory certificateID) public {
+        certificates[certificateID].isValid = false;
     }
 
-    function getData(string memory _certificateID) public view returns (
-        string memory candidateName,
-         string memory _companyName,
-        string memory course,
-        uint256 date,
-        uint256 duration,
-        bool isValid
-    ) {
+    function getData(
+        string memory _certificateID
+    )
+        public
+        view
+        returns (
+            string memory candidateName,
+            string memory _companyName,
+            string memory course,
+            uint256 date,
+            uint256 duration,
+            bool isValid
+        )
+    {
         Certificate memory certificate = certificates[_certificateID];
         return (
             certificate.candidateName,
@@ -60,7 +69,3 @@ contract CertificateGeneration {
         );
     }
 }
-
-
-
-// contract address = 0x899Dc355692c858b06A68ff6931397921d4fdC49
